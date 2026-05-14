@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from "react";
-import { X } from "lucide-react";
 import { useIsMobile } from "../hooks/useIsMobile";
 
 const REVIEW_ENTRIES = [

@@ -87,14 +87,12 @@ const LAYER_GROUPS: { key: "document" | "phase" | "quality"; label: string; sub:
   { key: "quality", label: "Quality Gate", sub: "Evaluation + routing" },
 ];
 
-function NodeButton({ node, isSelected, isConnected, dimmed, onSelect, onHover, onLeave }: {
+function NodeButton({ node, isSelected, dimmed, onSelect }: {
   node: DiagramNode;
   isSelected: boolean;
   isConnected: boolean;
   dimmed: boolean;
   onSelect: () => void;
-  onHover: () => void;
-  onLeave: () => void;
 }) {
   const Icon = node.icon;
   const colors = CATEGORY_COLORS[node.category];
@@ -103,8 +101,8 @@ function NodeButton({ node, isSelected, isConnected, dimmed, onSelect, onHover, 
   return (
     <button
       onClick={onSelect}
-      onMouseEnter={() => { setIsHov(true); onHover(); }}
-      onMouseLeave={() => { setIsHov(false); onLeave(); }}
+      onMouseEnter={() => { setIsHov(true); }}
+      onMouseLeave={() => { setIsHov(false); }}
       style={{
         background: "var(--bg)",
         border: `1px solid ${isSelected ? "var(--accent)" : colors.border}`,
@@ -139,7 +137,6 @@ function NodeButton({ node, isSelected, isConnected, dimmed, onSelect, onHover, 
 
 export function ArchitectureDiagram() {
   const [selected, setSelected] = useState<NodeId | null>(null);
-  const [hovered, setHovered] = useState<NodeId | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
   const isMobile = useIsMobile();
@@ -198,8 +195,6 @@ export function ArchitectureDiagram() {
                           isConnected={isConnected}
                           dimmed={dimmed}
                           onSelect={() => handleSelect(node.id)}
-                          onHover={() => setHovered(node.id)}
-                          onLeave={() => setHovered(null)}
                         />
                       );
                     })}
@@ -261,8 +256,6 @@ export function ArchitectureDiagram() {
                       isConnected={isConnected}
                       dimmed={dimmed}
                       onSelect={() => handleSelect(node.id)}
-                      onHover={() => setHovered(node.id)}
-                      onLeave={() => setHovered(null)}
                     />
                   </div>
                 );
