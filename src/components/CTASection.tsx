@@ -94,6 +94,39 @@ export function CTASection() {
         </a>
 
         <a
+          href="/renderer-skill.zip"
+          download="renderer-skill.zip"
+          className="glass-pill"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "0.5rem",
+            padding: "0.75rem 1.75rem",
+            fontSize: "0.9rem",
+            fontWeight: 500,
+            textDecoration: "none",
+            color: "var(--text)",
+            transition: "transform 0.15s ease, box-shadow 0.2s ease",
+          }}
+          onMouseDown={(e) => (e.currentTarget.style.transform = "scale(0.96)")}
+          onMouseUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
+          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+        >
+          <Download size={16} />
+          Claude Skill
+          <span style={{
+            fontSize: "0.7rem",
+            fontWeight: 500,
+            letterSpacing: "0.06em",
+            textTransform: "uppercase",
+            padding: "2px 6px",
+            borderRadius: "9999px",
+            background: "rgba(255,156,0,0.12)",
+            color: "var(--accent)",
+          }}>/renderer</span>
+        </a>
+
+        <a
           href="https://vivid-novel-reader.vercel.app/"
           target="_blank"
           rel="noopener noreferrer"
